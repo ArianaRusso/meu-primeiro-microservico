@@ -3,7 +3,6 @@ package com.gft.hrworker.resources;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
