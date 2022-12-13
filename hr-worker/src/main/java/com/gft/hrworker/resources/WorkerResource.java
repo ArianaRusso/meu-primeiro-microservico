@@ -1,9 +1,9 @@
 package com.gft.hrworker.resources;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -22,8 +22,8 @@ import com.gft.hrworker.repositories.WorkerRepository;
 @RequestMapping(value= "/workers")
 public class WorkerResource {
 	
-	private static Logger logger= org.slf4j.LoggerFactory.getLogger(WorkerResource.class);
-	
+	private static Logger logger = LoggerFactory.getLogger(WorkerResource.class);
+
 	@Value("${test.config}")
 	private String testConfig;
 	
@@ -34,9 +34,9 @@ public class WorkerResource {
 	@Autowired
 	private WorkerRepository repository;
 	
-	@GetMapping (value= "/configs" )
-	public ResponseEntity<Void> getConfigs(){
-		logger.info("CONFIG= "+ testConfig);
+	@GetMapping(value = "/configs")
+	public ResponseEntity<Void> getConfigs() {
+		logger.info("CONFIG = " + testConfig);
 		return ResponseEntity.noContent().build();
 	}
 	
@@ -57,8 +57,8 @@ public class WorkerResource {
 		
 		logger.info("PORT = " +env.getProperty("local.server.port"));
 		
-		Optional<Worker> obj= repository.findById(id);
-		return ResponseEntity.ok(obj.get());
+		Worker obj = repository.findById(id).get();
+		return ResponseEntity.ok(obj);
 	}
 
 }
